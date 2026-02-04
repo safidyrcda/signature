@@ -93,48 +93,96 @@ export default function SignaturePage() {
         </div>
 
         <div className="flex justify-center">
-          <div
-            href="https://www.mnparks.mg"
-            target="_blank"
-            rel="noreferrer"
-            ref={previewRef}
-            style={{
-              width: 700,
-              height: 250,
-              background: "#fff",
-              fontFamily: "Segoe UI, Arial",
-              textDecoration: "none",
-              color: "#1a1a1a",
-              padding: 50,
-              display: "block",
-              position: "relative",
-             
-            }}
-          >
-            <div style={{ fontSize: 11, marginTop: 20, position: "absolute", top: 0, right: 20   }}>
-              <div>
-                <a href={`tel:${formData.mobile}`} style={{ color: "#1a1a1a" }}>
-                  Mobile : {formData.mobile || "+261 XX XX XX"}
-                </a>
-              </div>
-              <div>
-                <a href={`https://facebook.com`} style={{ color: "#1a1a1a" }}>
-                
-                  E-mail : {formData.email || "email@example.com"}
-                </a>
-              </div>
-              </div>
-            <img src={'http://localhost:3000/test.jpeg'} alt="Logo MNP" width={600} height={330} style={{ marginBottom: 10 }} />
-            <div style={{ fontSize: 18, fontWeight: 700 }}>
-              {formData.prenom || "Prénom"} {formData.nom || "Nom"}
-            </div>
+          <table
+  ref={previewRef}
+  cellPadding="0"
+  cellSpacing="0"
+  
+  width="700"
+  style={{
+    fontFamily: "Segoe UI, Arial",
+    background: "#ffffff",
+    color: "#1a1a1a"
+  }}
+>
+  <tbody>
+    <tr>
+      
+      {/* Colonne gauche image */}
+      <td width="150" valign="middle" align="center">
+        <img
+          src="http://localhost:3000/test.jpeg"
+          width="130"
+          height="130"
+          style={{ display: "block" }}
+          alt="Logo gauche"
+        />
+      </td>
 
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#d4a574" }}>
-              {formData.poste || "Poste"}
-            </div>
+      {/* Colonne centrale contenu */}
+      <td
+        width="400"
+        valign="top"
+        style={{ padding: 20 }}
+      >
+        <div style={{ fontSize: 18, fontWeight: 700 }}>
+          {formData.prenom || "Prénom"} {formData.nom || "Nom"}
+        </div>
 
-            
-            </div>
+        <div
+          style={{
+            fontSize: 13,
+            fontWeight: 700,
+            color: "#d4a574"
+          }}
+        >
+          {formData.poste || "Poste"}
+        </div>
+
+        <div style={{ fontSize: 11, marginTop: 15 }}>
+          <div>
+            Mobile :{" "}
+            <a
+              href={`tel:${formData.mobile}`}
+              style={{
+                color: "#1a1a1a",
+                textDecoration: "none"
+              }}
+            >
+              {formData.mobile || "+261 XX XX XX"}
+            </a>
+          </div>
+
+          <div>
+            E-mail :{" "}
+            <a
+              href={`mailto:${formData.email}`}
+              style={{
+                color: "#1a1a1a",
+                textDecoration: "none"
+              }}
+            >
+              {formData.email || "email@example.com"}
+            </a>
+          </div>
+        </div>
+      </td>
+
+      {/* Colonne droite image */}
+      <td width="150" valign="middle" align="center">
+        <img
+          src="https://www.mnparks.mg/test.jpeg"
+          width="130"
+          height="130"
+          style={{ display: "block" }}
+          alt="Logo droite"
+        />
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
           </div>
         
       </form>
