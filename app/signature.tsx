@@ -1,61 +1,68 @@
-"use client"
+'use client';
 
-import type React from "react"
-import { useState, useRef } from "react"
-import { Download, Eye, Mail, Phone } from "lucide-react"
+import type React from 'react';
+import { useState, useRef } from 'react';
+import { Download, Eye, Mail, Phone } from 'lucide-react';
 
 export default function SignaturePage() {
-  const previewRef = useRef<HTMLDivElement>(null)
+  const previewRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
-    prenom: "Forename",
-    nom: "NAME",
-    poste: "Job title",
-    mobile: "(+261) 38 09 400 00",
-    email: "name_acronym@mnparks.mg"
-  })
+    prenom: 'Forename',
+    nom: 'NAME',
+    poste: 'Job title',
+    mobile: '(+261) 38 09 400 00',
+    email: 'name_acronym@mnparks.mg',
+  });
 
-  const [downloadFormat, setDownloadFormat] = useState<"svg" | "html" | "jpeg" | "copy">("copy")
+  const [downloadFormat, setDownloadFormat] = useState<
+    'svg' | 'html' | 'jpeg' | 'copy'
+  >('copy');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const copyRenderedSignature = async () => {
-    if (!previewRef.current) return
+    if (!previewRef.current) return;
 
-    const html = previewRef.current.innerHTML
+    const html = previewRef.current.innerHTML;
     try {
       await navigator.clipboard.write([
         new ClipboardItem({
-          "text/html": new Blob([html], { type: "text/html" }),
+          'text/html': new Blob([html], { type: 'text/html' }),
         }),
-      ])
-      alert("Signature copiée ✔️ Collez-la dans votre email.")
+      ]);
+      alert('Signature copiée ✔️ Collez-la dans votre email.');
     } catch {
-      alert("La copie n'est pas supportée par ce navigateur.")
+      alert("La copie n'est pas supportée par ce navigateur.");
     }
-  }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    copyRenderedSignature()
-  }
+    e.preventDefault();
+    copyRenderedSignature();
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
-      <form onSubmit={handleSubmit} className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8"
+      >
         {/* FORM SECTION */}
         <div className="space-y-4 bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-slate-800 mb-6">Générateur de Signature</h2>
+          <h2 className="text-2xl font-bold text-slate-800 mb-6">
+            Générateur de Signature
+          </h2>
 
           <div className="space-y-3">
             {[
-              { name: "prenom", label: "Prénom" },
-              { name: "nom", label: "Nom" },
-              { name: "poste", label: "Poste" },
-              { name: "mobile", label: "Mobile" },
-              { name: "email", label: "Email" }
+              { name: 'prenom', label: 'Prénom' },
+              { name: 'nom', label: 'Nom' },
+              { name: 'poste', label: 'Poste' },
+              { name: 'mobile', label: 'Mobile' },
+              { name: 'email', label: 'Email' },
             ].map((field) => (
               <div key={field.name}>
                 <label className="block text-sm font-medium text-slate-700 mb-1">
@@ -78,235 +85,233 @@ export default function SignaturePage() {
             Copier la Signature
           </button>
         </div>
-
-        {/* PREVIEW SECTION */}
-        
       </form>
 
       <div className="flex justify-center items-start">
-          <div ref={previewRef} className="bg-white shadow-2xl rounded-sm">
-            <table
-              cellPadding="0"
-              cellSpacing="0"
-              width="850"
-              style={{
-                fontFamily: "Segoe UI, Arial, sans-serif",
-                background: "#ffffff",
-                color: "#1a1a1a",
-              }}
-            >
-              <tbody>
-                <tr>
-                  <td
+        <div ref={previewRef} className="bg-white shadow-2xl rounded-sm">
+          <table
+            width="850"
+            style={{
+              fontFamily: 'Segoe UI, Arial, sans-serif',
+              background: '#ffffff',
+              color: '#1a1a1a',
+            }}
+          >
+            <tbody>
+              <tr>
+                <td
+                  width="180"
+                  valign="bottom"
+                  align="left"
+                  style={{
+                    padding: '0 0',
+                    borderRadius: '4px 0 0 0',
+                  }}
+                >
+                  <img
+                    src="http://localhost:3000/left.jpeg"
                     width="180"
-                    valign="bottom"
-                    align="left"
+                    height="auto"
+                    style={{ display: 'block', borderRadius: '0' }}
+                    alt="Madagascar National Parks"
+                  />
+                </td>
+                <td width="390" valign="bottom" align="left">
+                  <div
                     style={{
+                      fontSize: '11pt',
+                      fontWeight: '700',
+                      color: '#1a1a1a',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    {formData.prenom} {formData.nom}
+                  </div>
 
-                      padding: "0 0",
-                      borderRadius: "4px 0 0 0",
-                    }}
-                  >
-                    <img
-                      src="http://localhost:3000/left.jpeg"
-                      width="180"
-                      height="auto"
-                      style={{ display: "block", borderRadius: "0" }}
-                      alt="Madagascar National Parks"
-                    />
-                  </td>
-                  <td
-                    width="390"
-                    valign="bottom"
-                    align="left"
+                  <div
                     style={{
-                      padding: "0px 0px 10px 0px",
+                      fontSize: '11pt',
+                      fontWeight: '600',
+                      color: '#d4a574',
+                      marginBottom: '12pt',
                     }}
                   >
+                    {formData.poste}
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: '11pt',
+                      color: '#4a5568',
+                    }}
+                  >
+                    <div style={{ marginBottom: '0pt' }}>
+                      <a
+                        href={`tel:${formData.mobile}`}
+                        style={{ color: '#1a1a1a', textDecoration: 'none' }}
+                      >
+                        {formData.mobile}
+                      </a>
+                    </div>
+                    <div style={{ marginBottom: '8px' }}>
+                      <a
+                        href={`mailto:${formData.email}`}
+                        style={{ color: '#1a1a1a', textDecoration: 'none' }}
+                      >
+                        {formData.email}
+                      </a>
+                    </div>
                     <div
                       style={{
-                        fontSize: "11pt",
-                        fontWeight: "700",
-                        color: "#1a1a1a",
-                        marginBottom: "4px",
+                        marginBottom: '8px',
+                        fontSize: '8pt',
+                        color: '#4a5568',
                       }}
                     >
-                      {formData.prenom} {formData.nom}
+                      Lot AI 10 C Ambatobe Antananarivo 103 - MADAGASCAR
                     </div>
-                    
-
                     <div
                       style={{
-                        fontSize: "11pt",
-                        fontWeight: "600",
-                        color: "#d4a574",
-                        marginBottom: "12pt",
+                        marginTop: '8px',
+                        fontSize: '8pt',
+                        color: '#718096',
                       }}
                     >
-                      {formData.poste}
+                      <a
+                        href={`mailto:contact@mnparks.mg`}
+                        style={{ color: '#718096', textDecoration: 'none' }}
+                      >
+                        contact@mnparks.mg
+                      </a>{' '}
+                      - www.parcs-madagascar.com
                     </div>
+                  </div>
+                </td>
 
-                    <div style={{ fontSize: "11pt", lineHeight: "1.6", color: "#4a5568" }}>
-                      <div style={{ marginBottom: "0pt" }}>
-                        
-                        <a
-                          href={`tel:${formData.mobile}`}
-                          style={{ color: "#1a1a1a", textDecoration: "none" }}
-                        >
-                          {formData.mobile}
-                        </a>
-                      </div>
-                      <div style={{ marginBottom: "8px" }}>
-                        
-                        <a
-                          href={`mailto:${formData.email}`}
-                          style={{ color: "#1a1a1a", textDecoration: "none" }}
-                        >
-                          {formData.email}
-                        </a>
-                      </div>
-                      <div style={{ marginBottom: "8px", fontSize: "8pt", color: "#4a5568" }}>
-                       Lot AI 10 C Ambatobe Antananarivo 103 - MADAGASCAR
-                      </div>
-                      <div style={{ marginTop: "8px", fontSize: "8pt", color: "#718096" }}>
-                        <a
-                          href={`mailto:contact@mnparks.mg`}
-                          style={{ color: "#718096", textDecoration: "none" }}
-                        >
-                          contact@mnparks.mg
-                        </a>{" "}
-                        - www.parcs-madagascar.com
-                      </div>
-                    </div>
-                  </td>
-
-                  {/* RIGHT COLUMN - LOGOS */}
-                  <td
-                    width="210"
-                    valign="middle"
-                    align="left"
-                    style={{
-                      
-                      padding: "0 0",
-                      borderRadius: "0 8px 0 0",
-                    }}
-                  >
-                    <img
-                      src="http://localhost:3000/right.jpeg"
-                      width="211"
-                      height="auto"
-                      style={{ display: "block" }}
-                      alt="Madagascar National Parks"
-                    />
-                  </td>
-                </tr>
-
-                
-              </tbody>
-            </table>
-             <table
-              cellPadding="0"
-              cellSpacing="0"
-              width="850"
-              style={{
-                fontFamily: "Segoe UI, Arial, sans-serif",
-                background: "#ffffff",
-                color: "#1a1a1a",
-              }}
-            >
-              <tbody>
-                {/* FOOTER ROW */}
-                <tr>
-                  <td
+                {/* RIGHT COLUMN - LOGOS */}
+                <td
+                  width="210"
+                  valign="middle"
+                  align="left"
+                  style={{
+                    padding: '0 0',
+                  }}
+                >
+                  <img
+                    src="http://localhost:3000/right.jpeg"
+                    width="211"
+                    height="auto"
+                    style={{ display: 'block' }}
+                    alt="Madagascar National Parks"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            cellPadding="0"
+            cellSpacing="0"
+            width="850"
+            style={{
+              fontFamily: 'Segoe UI, Arial, sans-serif',
+              background: '#ffffff',
+              color: '#1a1a1a',
+            }}
+          >
+            <tbody>
+              <tr>
+                <td
+                  width="630"
+                  valign="top"
+                  align="left"
+                  style={{
+                    padding: '0 0',
+                  }}
+                >
+                  <img
+                    src="http://localhost:3000/footer.jpeg"
                     width="630"
-                    valign="top"
+                    height="auto"
+                    style={{ display: 'block' }}
+                    alt="Madagascar National Parks"
+                  />
+                </td>
+                <td
+                  width="170"
+                  colSpan={3}
+                  style={{
+                    padding: '0px',
+                    textAlign: 'left',
+                    borderRadius: '0 0 8px 8px',
+                  }}
+                >
+                  <table
                     align="center"
-                    style={{
-                      
-                      padding: "0 0",
-                      borderRadius: "0 8px 0 0",
-                    }}
+                    cellPadding="0"
+                    cellSpacing="0"
+                    border={0}
                   >
-                    <img
-                      src="http://localhost:3000/footer.jpeg"
-                      width="630"
-                      height="auto"
-                      style={{ display: "block" }}
-                      alt="Madagascar National Parks"
-                    />
-                  </td>
-                  <td width='170'
-                    colSpan={3}
-                    style={{
-                    
-                      padding: "0px",
-                      textAlign: "center",
-                      borderRadius: "0 0 8px 8px",
-                    }}
-                  >
-                   <table align="center" cellPadding="0" cellSpacing="0" border={0}>
-  <tbody>
-    <tr>
-      <td align="center" style={{ padding: "0 6px" }}>
-        <a
-          href="https://facebook.com"
-          style={{
-            display: "inline-block",
-            textDecoration: "none",
-          }}
-        >
-          <img
-            src="http://localhost:3000/fb.jpeg"
-            width="30"
-            height="30"
-            alt="Facebook"
-          />
-        </a>
-      </td>
+                    <tbody>
+                      <tr>
+                        <td align="center" style={{ padding: '0 6px' }}>
+                          <a
+                            href="https://facebook.com"
+                            style={{
+                              display: 'inline-block',
+                              textDecoration: 'none',
+                            }}
+                          >
+                            <img
+                              src="http://localhost:3000/fb.jpeg"
+                              width="30"
+                              height="30"
+                              alt="Facebook"
+                            />
+                          </a>
+                        </td>
 
-      <td align="center" style={{ padding: "0 6px" }}>
-        <a
-          href="https://youtube.com"
-          style={{
-            display: "inline-block",
-            textDecoration: "none",
-          }}
-        >
-          <img
-            src="http://localhost:3000/yt.jpeg"
-            width="30"
-            height="30"
-            alt="YouTube"
-          />
-        </a>
-      </td>
+                        <td align="center" style={{ padding: '0 6px' }}>
+                          <a
+                            href="https://youtube.com"
+                            style={{
+                              display: 'inline-block',
+                              textDecoration: 'none',
+                            }}
+                          >
+                            <img
+                              src="http://localhost:3000/yt.jpeg"
+                              width="30"
+                              height="30"
+                              alt="YouTube"
+                            />
+                          </a>
+                        </td>
 
-      <td align="center" style={{ padding: "0 6px" }}>
-        <a
-          href="https://linkedin.com"
-          style={{
-            display: "inline-block",
-            textDecoration: "none",
-          }}
-        >
-          <img
-            src="http://localhost:3000/in.jpeg"
-            width="30"
-            height="30"
-            alt="LinkedIn"
-          />
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-                  </td>
-                </tr>
-              </tbody>
-              </table>
-          </div>
+                        <td align="center" style={{ padding: '0 6px' }}>
+                          <a
+                            href="https://linkedin.com"
+                            style={{
+                              display: 'inline-block',
+                              textDecoration: 'none',
+                            }}
+                          >
+                            <img
+                              src="http://localhost:3000/in.jpeg"
+                              width="30"
+                              height="30"
+                              alt="LinkedIn"
+                            />
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
-  )
+  );
 }
