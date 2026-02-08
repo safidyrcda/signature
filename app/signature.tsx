@@ -92,16 +92,7 @@ export default function SignaturePage() {
 
         <div className="flex justify-left items-start mt-4">
           <div ref={previewRef} className="bg-red shadow-2xl">
-            <table
-              width="850"
-              cellPadding="0"
-              cellSpacing="0"
-              style={{
-                fontFamily: 'Segoe UI, Arial, sans-serif',
-                background: '#red',
-                color: '#1a1a1a',
-              }}
-            >
+            <table width="850" cellPadding="0" cellSpacing="0">
               <tbody>
                 <tr>
                   <td
@@ -114,13 +105,18 @@ export default function SignaturePage() {
                       borderRadius: '4px 0 0 0',
                       width: '180px',
                       height: '100px',
+                      position: 'relative',
                     }}
                   >
                     <img
-                      src="https://signature.parcs-madagascar.com/left.jpeg"
+                      src="https://signature.parcs-madagascar.com/left.png"
                       width="180"
                       height="auto"
-                      style={{ display: 'block', borderRadius: '0' }}
+                      style={{
+                        display: 'block',
+                        borderRadius: '0',
+                        left: 0,
+                      }}
                       alt="Madagascar National Parks"
                     />
                   </td>
@@ -200,7 +196,15 @@ export default function SignaturePage() {
                         >
                           contact@mnparks.mg
                         </a>{' '}
-                        - www.parcs-madagascar.com
+                        <a
+                          href={`https://parcs-madagascar.com/`}
+                          style={{
+                            color: '#718096',
+                            textDecoration: 'none',
+                          }}
+                        >
+                          - www.parcs-madagascar.com
+                        </a>
                       </p>
                     </div>
                   </td>
@@ -214,7 +218,7 @@ export default function SignaturePage() {
                     }}
                   >
                     <img
-                      src="https://signature.parcs-madagascar.com/right.jpeg"
+                      src="https://signature.parcs-madagascar.com/right.png"
                       width="211"
                       height="auto"
                       style={{ display: 'block' }}
@@ -247,7 +251,7 @@ export default function SignaturePage() {
                     }}
                   >
                     <img
-                      src="https://signature.parcs-madagascar.com/footer.jpeg"
+                      src="https://signature.parcs-madagascar.com/footer.png"
                       width="650"
                       height="auto"
                       style={{
@@ -274,16 +278,16 @@ export default function SignaturePage() {
                     >
                       <tbody>
                         <tr>
-                          <td align="center" style={{ padding: '0 0px' }}>
+                          <td align="center" style={{ padding: '0 6px' }}>
                             <a
-                              href="https://facebook.com"
+                              href="https://www.facebook.com/madagascarnationalparks/"
                               style={{
                                 display: 'inline-block',
                                 textDecoration: 'none',
                               }}
                             >
                               <img
-                                src="https://signature.parcs-madagascar.com/fb.jpeg"
+                                src="https://signature.parcs-madagascar.com/fb.png"
                                 width="30"
                                 height="30"
                                 alt="Facebook"
@@ -293,14 +297,14 @@ export default function SignaturePage() {
 
                           <td align="center" style={{ padding: '0 6px' }}>
                             <a
-                              href="https://youtube.com"
+                              href="https://www.youtube.com/channel/UC6AmIfYIQoPKF94TsSxHQFQ"
                               style={{
                                 display: 'inline-block',
                                 textDecoration: 'none',
                               }}
                             >
                               <img
-                                src="https://signature.parcs-madagascar.com/yt.jpeg"
+                                src="https://signature.parcs-madagascar.com/yt.png"
                                 width="30"
                                 height="30"
                                 alt="YouTube"
@@ -310,14 +314,14 @@ export default function SignaturePage() {
 
                           <td align="center" style={{ padding: '0 6px' }}>
                             <a
-                              href="https://linkedin.com"
+                              href="https://www.linkedin.com/company/mada-national-parks/"
                               style={{
                                 display: 'inline-block',
                                 textDecoration: 'none',
                               }}
                             >
                               <img
-                                src="https://signature.parcs-madagascar.com/in.jpeg"
+                                src="https://signature.parcs-madagascar.com/in.png"
                                 width="30"
                                 height="30"
                                 alt="LinkedIn"
