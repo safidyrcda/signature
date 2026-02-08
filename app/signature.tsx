@@ -26,6 +26,8 @@ export default function SignaturePage() {
   const copyRenderedSignature = async () => {
     if (!previewRef.current) return;
 
+    const p = "<p  style=' font-size:8pt;color:#718096; margin:0;> test</p>";
+
     const html = previewRef.current.innerHTML;
     try {
       await navigator.clipboard.write([
@@ -89,7 +91,7 @@ export default function SignaturePage() {
         </form>
 
         <div className="flex justify-left items-start mt-4">
-          <div ref={previewRef} className="bg-white shadow-2xl">
+          <div ref={previewRef} className="bg-red shadow-2xl">
             <table
               width="850"
               cellPadding="0"
@@ -122,7 +124,12 @@ export default function SignaturePage() {
                       alt="Madagascar National Parks"
                     />
                   </td>
-                  <td width="390" valign="bottom" align="left">
+                  <td
+                    width="390"
+                    valign="bottom"
+                    align="left"
+                    style={{ padding: '0 12px', marginBottom: '0px' }}
+                  >
                     <div
                       style={{
                         fontSize: '11pt',
@@ -169,19 +176,19 @@ export default function SignaturePage() {
                       </div>
                       <div
                         style={{
-                          marginBottom: '8px',
+                          marginBottom: '3px',
                           fontSize: '8pt',
                           color: '#4a5568',
                         }}
                       >
                         Lot AI 10 C Ambatobe Antananarivo 103 - MADAGASCAR
                       </div>
-                      <div
+                      <p
                         style={{
-                          marginTop: '8px',
                           fontSize: '8pt',
                           color: '#718096',
-                          marginBottom: '10px',
+                          margin: 0,
+                          paddingBottom: '5px',
                         }}
                       >
                         <a
@@ -194,7 +201,7 @@ export default function SignaturePage() {
                           contact@mnparks.mg
                         </a>{' '}
                         - www.parcs-madagascar.com
-                      </div>
+                      </p>
                     </div>
                   </td>
 
@@ -235,6 +242,8 @@ export default function SignaturePage() {
                     align="left"
                     style={{
                       padding: '0px 0px 0px 0px',
+                      width: '650px',
+                      height: 'auto',
                     }}
                   >
                     <img
@@ -243,6 +252,9 @@ export default function SignaturePage() {
                       height="auto"
                       style={{
                         display: 'block',
+                        width: '1055px',
+                        height: 'auto',
+                        maxWidth: '100%',
                       }}
                       alt="Madagascar National Parks"
                     />
