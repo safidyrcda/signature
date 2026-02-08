@@ -8,11 +8,11 @@ export default function SignaturePage() {
   const previewRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
-    prenom: 'Forename',
-    nom: 'NAME',
-    poste: 'Job title',
+    prenom: 'Prénom',
+    nom: 'Nom',
+    poste: 'Poste',
     mobile: '(+261) 38 09 400 00',
-    email: 'name_acronym@mnparks.mg',
+    email: 'email@mnparks.mg',
   });
 
   const [downloadFormat, setDownloadFormat] = useState<
