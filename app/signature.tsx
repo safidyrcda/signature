@@ -256,7 +256,7 @@ export default function SignaturePage() {
                       height="auto"
                       style={{
                         display: 'block',
-                        width: '1055px',
+                        width: '650px',
                         height: 'auto',
                         maxWidth: '100%',
                       }}
