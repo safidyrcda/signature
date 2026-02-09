@@ -246,7 +246,7 @@ export default function SignaturePage() {
                     align="left"
                     style={{
                       padding: '0px 0px 0px 0px',
-                      width: '650px',
+                      width: '650',
                       height: 'auto',
                     }}
                   >
@@ -256,7 +256,7 @@ export default function SignaturePage() {
                       height="auto"
                       style={{
                         display: 'block',
-                        width: '650px',
+                        width: '650',
                         height: 'auto',
                         maxWidth: '100%',
                       }}
