@@ -257,7 +257,6 @@ export default function SignaturePage() {
                       style={{
                         display: 'block',
                         width: '650',
-                        height: 'auto',
                         maxWidth: '100%',
                       }}
                       alt="Madagascar National Parks"
