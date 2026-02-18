@@ -110,7 +110,7 @@ export default function SignaturePage() {
                   >
                     <img
                       src="https://signature.parcs-madagascar.com/left.png"
-                      width="100"
+                      width="180"
                       height="auto"
                       style={{
                         display: 'block',
