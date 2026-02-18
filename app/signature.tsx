@@ -110,7 +110,7 @@ export default function SignaturePage() {
                   >
                     <img
                       src="https://signature.parcs-madagascar.com/left.png"
-                      width="180"
+                      width="100"
                       height="auto"
                       style={{
                         display: 'block',
@@ -129,12 +129,22 @@ export default function SignaturePage() {
                     <div
                       style={{
                         fontSize: '11pt',
-                        fontWeight: '700',
-                        color: '#1a1a1a',
+                        fontWeight: '500',
+                        color: '#10103c',
                         marginBottom: '0px',
                       }}
                     >
-                      {formData.prenom} {formData.nom}
+                      {formData.prenom}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: '11pt',
+                        fontWeight: '700',
+                        color: '#10103c',
+                        marginBottom: '0px',
+                      }}
+                    >
+                      {formData.nom}
                     </div>
 
                     <div
@@ -142,7 +152,6 @@ export default function SignaturePage() {
                         fontSize: '11pt',
                         fontWeight: '600',
                         color: '#d4a574',
-                        marginBottom: '12pt',
                       }}
                     >
                       {formData.poste}
@@ -172,7 +181,6 @@ export default function SignaturePage() {
                       </div>
                       <div
                         style={{
-                          marginBottom: '3px',
                           fontSize: '8pt',
                           color: '#4a5568',
                         }}
@@ -184,7 +192,7 @@ export default function SignaturePage() {
                           fontSize: '8pt',
                           color: '#718096',
                           margin: 0,
-                          paddingBottom: '5px',
+                          marginBottom: '3pt',
                         }}
                       >
                         <a
